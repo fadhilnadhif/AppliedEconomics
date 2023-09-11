@@ -13,7 +13,7 @@
 	clear all
 	
 	** SET GLOBAL DIRECTORY PATH
-	if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Desktop/AppliedEconomics/Task2"
+	if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Desktop/AppliedEconomicsI/Task2"
 	cd "$path"
 	
 	** LOG FILE
