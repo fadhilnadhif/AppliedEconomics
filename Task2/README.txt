@@ -30,6 +30,6 @@ Logical steps for each tasks
 * TASK 2A:
 Master.do -> DataConstruction.do -> Programs.do -> ValueReview.do
 
-* TASK 2B:
+* TASK 2C:
 Master.do -> DataConstruction.do -> Programs.do -> AK91Tables.do
 
