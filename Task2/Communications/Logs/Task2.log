@@ -1,10 +1,9 @@
 --------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/P
-> hD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2/Com
-> munications/Logs/Task2.log
+       log:  /Users/nadhif/Desktop/AppliedEconomicsI/Task2/Communications/Logs/Task2.l
+> og
   log type:  text
- opened on:   4 Sep 2023, 21:56:31
+ opened on:  11 Sep 2023, 17:37:28
 
 .         
 .         ** SET BUILD AND ANALYSIS PATH
@@ -36,17 +35,8 @@
 
 . 
 .         ** SET GLOBAL DIRECTORY PATH
-.         if `"`c(os)'"' == "Windows"  global path "C:/Users/fa.4982/OneDrive - Handel
-> shögskolan i Stockholm/PhD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil 
-> Nadhif Muharam/Task2"
-
-.         if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Library/CloudStora
-> ge/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Empirical Economics/Pr
-> oblem Set/Fadhil Nadhif Muharam/Task2"
-
 .         cd "$path"
-/Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/
-> Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2
+/Users/nadhif/Desktop/AppliedEconomicsI/Task2
 
 .         // Note: I set global directory path here instead of the master do file 
 .         // to ease replicator to replicate individual tables separately
@@ -251,7 +241,7 @@ file Analysis/Data/AK91_Data.dta saved
 .         la var c_size           "Class size"
  14.         la var c_boys           "Number of boys in class"
  15.         la var c_girls          "Number of firls in class"
- 16.         la var c_num`i'rd       "Number 4th grade classes in school"
+ 16.         la var c_num`i'rd       "Number `i'th grade classes in school"
  17.         la var c_type           "Number of special education classes"
  18.         la var flgrm            "\% failer in grammar"
  19.         la var mrkgrm           "Mean mark in grammar"
@@ -407,17 +397,8 @@ end of do-file
 
 . 
 .         ** SET GLOBAL DIRECTORY PATH
-.         if `"`c(os)'"' == "Windows" global path "C:/Users/fa.4982/OneDrive - Handels
-> högskolan i Stockholm/PhD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil N
-> adhif Muharam/Task2"
-
-.         if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Library/CloudStora
-> ge/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Empirical Economics/Pr
-> oblem Set/Fadhil Nadhif Muharam/Task2"
-
 .         cd "$path"
-/Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/
-> Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2
+/Users/nadhif/Desktop/AppliedEconomicsI/Task2
 
 .         // Note: I set global directory path here instead of the master do file 
 .         // to ease replicator to replicate individual tables separately
@@ -2173,17 +2154,8 @@ end of do-file
 
 . 
 .         ** SET GLOBAL DIRECTORY PATH
-.         if `"`c(os)'"' == "Windows" global path "C:/Users/fa.4982/OneDrive - Handels
-> högskolan i Stockholm/PhD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil N
-> adhif Muharam/Task2"
-
-.         if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Library/CloudStora
-> ge/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Empirical Economics/Pr
-> oblem Set/Fadhil Nadhif Muharam/Task2"
-
 .         cd "$path"
-/Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/
-> Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2
+/Users/nadhif/Desktop/AppliedEconomicsI/Task2
 
 .         // Note: I set global directory path here instead of the master do file 
 .         // to ease replicator to replicate individual tables separately
@@ -2656,9 +2628,8 @@ end of do-file
 .         
 .         log close 
       name:  <unnamed>
-       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/P
-> hD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2/Com
-> munications/Logs/Task2.log
+       log:  /Users/nadhif/Desktop/AppliedEconomicsI/Task2/Communications/Logs/Task2.l
+> og
   log type:  text
- closed on:   4 Sep 2023, 21:57:54
+ closed on:  11 Sep 2023, 17:38:51
 --------------------------------------------------------------------------------------
