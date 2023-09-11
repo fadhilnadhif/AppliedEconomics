@@ -14,8 +14,6 @@
 	clear all
 
 	** SET GLOBAL DIRECTORY PATH
-	if `"`c(os)'"' == "Windows"  global path "C:/Users/fa.4982/OneDrive - Handelshögskolan i Stockholm/PhD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2"
-	if `"`c(os)'"' == "MacOSX"   global path = "/Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Empirical Economics/Problem Set/Fadhil Nadhif Muharam/Task2"
 	cd "$path"
 	// Note: I set global directory path here instead of the master do file 
 	// to ease replicator to replicate individual tables separately
