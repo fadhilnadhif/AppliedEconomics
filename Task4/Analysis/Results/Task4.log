@@ -1,0 +1,424 @@
+--------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Emp
+> irical Economics/Problem Set/Fadhil Nadhif Muharam/Task4/Analysis/Results/Task4.log
+  log type:  text
+ opened on:  26 Sep 2023, 15:10:15
+
+. 
+. /*=========================================================================*/
+. /*                                EXERCISE 1                               */
+. /*=========================================================================*/
+. 
+. /*** DATA PREPARATION ***/
+. use "$inputpath/growthdata92_02.dta", clear     
+
+. 
+.         * Drop 20% of sample randomly 
+.         set seed 20230927
+
+.         gen random = runiform()
+
+.         drop if random > 0.8
+(22 observations deleted)
+
+.         drop random
+
+.         
+.         * Keep the out-of-sample country for the next period
+.         preserve
+
+.         keep iso3
+
+.         tempfile countryinsample
+
+.         save `countryinsample', replace
+(file /var/folders/1q/w9k33ndn3r764dwmlxmm3z540000gn/T//S_33078.000002 not found)
+file /var/folders/1q/w9k33ndn3r764dwmlxmm3z540000gn/T//S_33078.000002 saved as .dta format
+
+.         restore 
+
+.         
+. /*** SUBSET SELECTION ***/
+. 
+. ** 80% Subsample
+.         ** Forward stepwise selection
+.         stepwise, pr(.2) pe(.1) forward: reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mo
+> rt lexp tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parlia
+> mentary presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with empty model:
+p = 0.0000 <  0.1000, adding inf_mort
+p = 0.0000 <  0.1000, adding effectiveness
+p = 0.0002 <  0.1000, adding ext_bal
+p = 0.0011 <  0.1000, adding gvmnt_c
+p = 0.0112 <  0.1000, adding inflation
+p = 0.0371 <  0.1000, adding urban
+p = 0.0704 <  0.1000, adding voice
+
+      Source |       SS           df       MS      Number of obs   =        90
+-------------+----------------------------------   F(7, 82)        =    116.76
+       Model |   79.810649         7  11.4015213   Prob > F        =    0.0000
+    Residual |  8.00695255        82  .097645763   R-squared       =    0.9088
+-------------+----------------------------------   Adj R-squared   =    0.9010
+       Total |  87.8176016        89  .986714624   Root MSE        =    .31248
+
+-------------------------------------------------------------------------------
+         ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+     inf_mort |  -.4689105   .0542781    -8.64   0.000    -.5768869   -.3609341
+effectiveness |   .4534737   .0874429     5.19   0.000     .2795219    .6274255
+      ext_bal |   .1373059   .0313639     4.38   0.000     .0749131    .1996987
+      gvmnt_c |   .0776552   .0361067     2.15   0.034     .0058275    .1494829
+    inflation |   .0612948   .0246739     2.48   0.015     .0122105    .1103791
+        urban |   .1070331   .0514711     2.08   0.041     .0046408    .2094254
+        voice |  -.1291853   .0704696    -1.83   0.070    -.2693717    .0110012
+        _cons |  -.0091926   .0348512    -0.26   0.793    -.0785228    .0601376
+-------------------------------------------------------------------------------
+
+. 
+.         ** Backward stepwise selection
+.         stepwise, pr(.2) pe(.1): reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mort lexp 
+> tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parliamentary 
+> presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with full model:
+p = 0.9469 >= 0.2000, removing gcf
+p = 0.9120 >= 0.2000, removing yrsoffc
+p = 0.8037 >= 0.2000, removing age_dep_young
+p = 0.7929 >= 0.2000, removing military
+p = 0.7437 >= 0.2000, removing stability
+p = 0.7642 >= 0.2000, removing lexp
+p = 0.7446 >= 0.2000, removing inflation
+p = 0.4065 >= 0.2000, removing law
+p = 0.4807 >= 0.2000, removing corruption
+p = 0.5257 >= 0.2000, removing tot_emp
+p = 0.5624 >= 0.2000, removing fem_emp
+p = 0.3816 >= 0.2000, removing age_dep_old
+p = 0.3609 >= 0.2000, removing regulation
+
+      Source |       SS           df       MS      Number of obs   =        90
+-------------+----------------------------------   F(12, 77)       =     77.68
+       Model |  81.1166917        12  6.75972431   Prob > F        =    0.0000
+    Residual |  6.70090988        77  .087024804   R-squared       =    0.9237
+-------------+----------------------------------   Adj R-squared   =    0.9118
+       Total |  87.8176016        89  .986714624   Root MSE        =      .295
+
+--------------------------------------------------------------------------------------
+                ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+             gvmnt_c |   .0949272    .036153     2.63   0.010     .0229374    .1669171
+competitiveness_exec |   3.808062   2.171182     1.75   0.083    -.5153146    8.131438
+             ext_bal |   .1730439   .0315553     5.48   0.000     .1102093    .2358785
+               trade |   .0765222   .0455445     1.68   0.097    -.0141685    .1672129
+        presidential |   .1187949   .0557054     2.13   0.036     .0078714    .2297185
+       effectiveness |   .3884689   .0806749     4.82   0.000     .2278247     .549113
+ competitiveness_leg |  -3.832425   2.169944    -1.77   0.081    -8.153336    .4884866
+            inf_mort |  -.2903519   .0757216    -3.83   0.000    -.4411328   -.1395709
+               voice |  -.1791415   .0733612    -2.44   0.017    -.3252224   -.0330607
+                 tfr |  -.1841899   .0681784    -2.70   0.008    -.3199503   -.0484294
+       parliamentary |    .145639   .0641291     2.27   0.026     .0179416    .2733364
+               urban |   .1442392   .0517743     2.79   0.007     .0411433     .247335
+               _cons |   .0336489    .033511     1.00   0.318    -.0330801    .1003778
+--------------------------------------------------------------------------------------
+
+. 
+. ** Full Sample 
+. use "$inputpath/growthdata92_02.dta", clear     
+
+. 
+.         ** Forward stepwise selection
+.         stepwise, pr(.2) pe(.1) forward: reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mo
+> rt lexp tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parlia
+> mentary presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with empty model:
+p = 0.0000 <  0.1000, adding inf_mort
+p = 0.0000 <  0.1000, adding effectiveness
+p = 0.0000 <  0.1000, adding urban
+p = 0.0003 <  0.1000, adding ext_bal
+p = 0.0028 <  0.1000, adding age_dep_young
+p = 0.0023 <  0.1000, adding gvmnt_c
+
+      Source |       SS           df       MS      Number of obs   =       112
+-------------+----------------------------------   F(6, 105)       =    137.29
+       Model |  93.3915656         6  15.5652609   Prob > F        =    0.0000
+    Residual |  11.9048098       105  .113379141   R-squared       =    0.8869
+-------------+----------------------------------   Adj R-squared   =    0.8805
+       Total |  105.296375       111  .948615994   Root MSE        =    .33672
+
+-------------------------------------------------------------------------------
+         ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+     inf_mort |  -.2941392   .0568413    -5.17   0.000     -.406845   -.1814334
+effectiveness |   .2194021   .0551408     3.98   0.000     .1100681    .3287361
+        urban |   .1678952   .0497226     3.38   0.001     .0693044     .266486
+      ext_bal |   .1478797   .0326504     4.53   0.000     .0831399    .2126194
+age_dep_young |  -.2046947   .0629846    -3.25   0.002    -.3295815   -.0798079
+      gvmnt_c |   .1015748    .032503     3.13   0.002     .0371273    .1660222
+        _cons |   .0192989   .0328748     0.59   0.558    -.0458858    .0844836
+-------------------------------------------------------------------------------
+
+. 
+.         ** Backward stepwise selection
+.         stepwise, pr(.2) pe(.1): reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mort lexp 
+> tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parliamentary 
+> presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with full model:
+p = 0.9301 >= 0.2000, removing fem_emp
+p = 0.9226 >= 0.2000, removing military
+p = 0.8932 >= 0.2000, removing lexp
+p = 0.7943 >= 0.2000, removing age_dep_old
+p = 0.7327 >= 0.2000, removing inflation
+p = 0.6968 >= 0.2000, removing stability
+p = 0.7303 >= 0.2000, removing trade
+p = 0.6961 >= 0.2000, removing tfr
+p = 0.6082 >= 0.2000, removing corruption
+p = 0.5369 >= 0.2000, removing gcf
+p = 0.4766 >= 0.2000, removing yrsoffc
+p = 0.3776 >= 0.2000, removing law
+p = 0.3042 >= 0.2000, removing regulation
+
+      Source |       SS           df       MS      Number of obs   =       112
+-------------+----------------------------------   F(12, 99)       =     77.88
+       Model |  95.2110122        12  7.93425102   Prob > F        =    0.0000
+    Residual |  10.0853632        99  .101872355   R-squared       =    0.9042
+-------------+----------------------------------   Adj R-squared   =    0.8926
+       Total |  105.296375       111  .948615994   Root MSE        =    .31917
+
+--------------------------------------------------------------------------------------
+                ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+             gvmnt_c |    .107269   .0327444     3.28   0.001      .042297    .1722411
+ competitiveness_leg |  -3.715167    1.84774    -2.01   0.047    -7.381484   -.0488505
+             ext_bal |   .1747875   .0324928     5.38   0.000     .1103147    .2392603
+        presidential |   .1597796   .0526859     3.03   0.003     .0552394    .2643197
+               voice |  -.0879581   .0664426    -1.32   0.189    -.2197946    .0438784
+competitiveness_exec |   3.697742   1.849289     2.00   0.048     .0283505    7.367133
+             tot_emp |  -.0497835   .0339119    -1.47   0.145    -.1170721    .0175051
+            inf_mort |  -.2410799   .0574621    -4.20   0.000    -.3550972   -.1270627
+               urban |   .1391268   .0516493     2.69   0.008     .0366433    .2416102
+       parliamentary |   .1637429     .05749     2.85   0.005     .0496702    .2778156
+       effectiveness |   .2731252    .074983     3.64   0.000     .1243427    .4219077
+       age_dep_young |  -.2441824   .0663156    -3.68   0.000     -.375767   -.1125978
+               _cons |   .0308126   .0315799     0.98   0.332    -.0318489     .093474
+--------------------------------------------------------------------------------------
+
+. 
+. 
+. /*=========================================================================*/
+. /*                                EXERCISE 2                               */
+. /*=========================================================================*/
+. 
+. /*** DATA PREPARATION ***/
+. use "$inputpath/growthdata02_11.dta", clear     
+
+. 
+.         * Drop 20% of sample randomly 
+.         set seed 20230927
+
+.         gen random = runiform()
+
+.         drop if random > 0.8
+(22 observations deleted)
+
+.         drop random
+
+.         
+.         * Keep the out-of-sample country for the next period
+.         preserve
+
+.         keep iso3
+
+.         tempfile countryinsample
+
+.         save `countryinsample', replace
+(file /var/folders/1q/w9k33ndn3r764dwmlxmm3z540000gn/T//S_33078.000004 not found)
+file /var/folders/1q/w9k33ndn3r764dwmlxmm3z540000gn/T//S_33078.000004 saved as .dta format
+
+.         restore 
+
+.         
+. /*** SUBSET SELECTION ***/
+. 
+. ** 80% Subsample
+.         ** Forward stepwise selection
+.         stepwise, pr(.2) pe(.1) forward: reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mo
+> rt lexp tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parlia
+> mentary presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with empty model:
+p = 0.0000 <  0.1000, adding effectiveness
+p = 0.0000 <  0.1000, adding inf_mort
+p = 0.0000 <  0.1000, adding ext_bal
+p = 0.0012 <  0.1000, adding gvmnt_c
+p = 0.0194 <  0.1000, adding tfr
+p = 0.0205 <  0.1000, adding corruption
+p = 0.0091 <  0.1000, adding fem_emp
+p = 0.0770 <  0.1000, adding competitiveness_exec
+p = 0.0869 <  0.1000, adding urban
+p = 0.2382 >= 0.2000, removing gvmnt_c
+p = 0.0470 <  0.1000, adding parliamentary
+
+      Source |       SS           df       MS      Number of obs   =        90
+-------------+----------------------------------   F(9, 80)        =    136.59
+       Model |  90.5037733         9  10.0559748   Prob > F        =    0.0000
+    Residual |  5.88962398        80    .0736203   R-squared       =    0.9389
+-------------+----------------------------------   Adj R-squared   =    0.9320
+       Total |  96.3933972        89  1.08307188   Root MSE        =    .27133
+
+--------------------------------------------------------------------------------------
+                ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+       effectiveness |   .2992963   .1166274     2.57   0.012     .0672005    .5313922
+            inf_mort |  -.1835199   .0874632    -2.10   0.039    -.3575772   -.0094626
+             ext_bal |   .1930482   .0359468     5.37   0.000     .1215118    .2645847
+               urban |   .1415356   .0501077     2.82   0.006     .0418182    .2412531
+                 tfr |  -.2204547   .0696653    -3.16   0.002    -.3590931   -.0818163
+          corruption |   .1741747   .1062536     1.64   0.105    -.0372767     .385626
+             fem_emp |  -.0950261   .0320142    -2.97   0.004    -.1587364   -.0313157
+competitiveness_exec |  -4.328676   1.374545    -3.15   0.002    -7.064108   -1.593244
+       parliamentary |   .0926087   .0458959     2.02   0.047     .0012729    .1839444
+               _cons |    .306099   .1045547     2.93   0.004     .0980286    .5141694
+--------------------------------------------------------------------------------------
+
+. 
+.         ** Backward stepwise selection
+.         stepwise, pr(.2) pe(.1): reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mort lexp 
+> tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parliamentary 
+> presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with full model:
+p = 0.9708 >= 0.2000, removing stability
+p = 0.9688 >= 0.2000, removing gvmnt_c
+p = 0.8061 >= 0.2000, removing trade
+p = 0.7851 >= 0.2000, removing presidential
+p = 0.7248 >= 0.2000, removing tfr
+p = 0.6397 >= 0.2000, removing effectiveness
+p = 0.6814 >= 0.2000, removing competitiveness_leg
+p = 0.5163 >= 0.2000, removing tot_emp
+p = 0.6543 >= 0.2000, removing age_dep_old
+p = 0.4876 >= 0.2000, removing lexp
+p = 0.3762 >= 0.2000, removing voice
+p = 0.4852 >= 0.2000, removing law
+p = 0.3064 >= 0.2000, removing gcf
+
+      Source |       SS           df       MS      Number of obs   =        90
+-------------+----------------------------------   F(12, 77)       =    108.67
+       Model |  91.0191753        12  7.58493127   Prob > F        =    0.0000
+    Residual |  5.37422195        77   .06979509   R-squared       =    0.9442
+-------------+----------------------------------   Adj R-squared   =    0.9356
+       Total |  96.3933972        89  1.08307188   Root MSE        =    .26419
+
+--------------------------------------------------------------------------------------
+                ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+             yrsoffc |   .0550218   .0375067     1.47   0.146    -.0196635    .1297071
+               urban |   .1372185   .0501341     2.74   0.008     .0373887    .2370483
+             ext_bal |   .1720306   .0355963     4.83   0.000     .1011493    .2429119
+          regulation |   .1524127   .0842425     1.81   0.074    -.0153355    .3201609
+           inflation |   1.063446    .749608     1.42   0.160     -.429214    2.556107
+             fem_emp |  -.1014569   .0323409    -3.14   0.002    -.1658559   -.0370579
+       parliamentary |   .1257822   .0456482     2.76   0.007     .0348851    .2166793
+            inf_mort |  -.2367143   .0767292    -3.09   0.003    -.3895016   -.0839269
+            military |  -.0778056   .0362393    -2.15   0.035    -.1499673   -.0056439
+          corruption |   .2719034   .0793621     3.43   0.001     .1138733    .4299335
+competitiveness_exec |  -4.680424   1.418477    -3.30   0.001    -7.504973   -1.855876
+       age_dep_young |  -.2003262   .0670319    -2.99   0.004    -.3338038   -.0668487
+               _cons |   .5422773   .2049296     2.65   0.010     .1342103    .9503443
+--------------------------------------------------------------------------------------
+
+. 
+. ** Full Sample 
+. use "$inputpath/growthdata02_11.dta", clear     
+
+. 
+.         ** Forward stepwise selection
+.         stepwise, pr(.2) pe(.1) forward: reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mo
+> rt lexp tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parlia
+> mentary presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with empty model:
+p = 0.0000 <  0.1000, adding effectiveness
+p = 0.0000 <  0.1000, adding inf_mort
+p = 0.0000 <  0.1000, adding ext_bal
+p = 0.0002 <  0.1000, adding urban
+p = 0.0006 <  0.1000, adding tfr
+p = 0.2307 >= 0.2000, removing inf_mort
+p = 0.0157 <  0.1000, adding gvmnt_c
+p = 0.0429 <  0.1000, adding fem_emp
+
+      Source |       SS           df       MS      Number of obs   =       112
+-------------+----------------------------------   F(6, 105)       =    199.20
+       Model |  106.823315         6  17.8038859   Prob > F        =    0.0000
+    Residual |   9.3847506       105  .089378577   R-squared       =    0.9192
+-------------+----------------------------------   Adj R-squared   =    0.9146
+       Total |  116.208066       111  1.04691951   Root MSE        =    .29896
+
+-------------------------------------------------------------------------------
+         ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+effectiveness |   .4979547   .0449725    11.07   0.000     .4087827    .5871268
+          tfr |  -.3150904   .0444608    -7.09   0.000     -.403248   -.2269327
+      ext_bal |   .2229547   .0373906     5.96   0.000     .1488161    .2970933
+        urban |    .162405   .0441188     3.68   0.000     .0749256    .2498843
+      gvmnt_c |    .080614   .0366888     2.20   0.030     .0078668    .1533611
+      fem_emp |  -.0634228   .0309487    -2.05   0.043    -.1247884   -.0020573
+        _cons |  -.0078239   .0295249    -0.26   0.792    -.0663663    .0507184
+-------------------------------------------------------------------------------
+
+. 
+.         ** Backward stepwise selection
+.         stepwise, pr(.2) pe(.1): reg ln_y gvmnt_c gcf ext_bal trade inflation fem_emp tot_emp inf_mort lexp 
+> tfr age_dep_old age_dep_young urban yrsoffc military competitiveness_leg competitiveness_exec parliamentary 
+> presidential voice stability effectiveness regulation law corruption
+
+Wald test, begin with full model:
+p = 0.9681 >= 0.2000, removing tfr
+p = 0.8920 >= 0.2000, removing age_dep_old
+p = 0.8917 >= 0.2000, removing tot_emp
+p = 0.8096 >= 0.2000, removing presidential
+p = 0.8130 >= 0.2000, removing gvmnt_c
+p = 0.6346 >= 0.2000, removing trade
+p = 0.5341 >= 0.2000, removing effectiveness
+p = 0.4490 >= 0.2000, removing law
+p = 0.3807 >= 0.2000, removing competitiveness_exec
+p = 0.3530 >= 0.2000, removing gcf
+p = 0.3425 >= 0.2000, removing inflation
+p = 0.2840 >= 0.2000, removing regulation
+
+      Source |       SS           df       MS      Number of obs   =       112
+-------------+----------------------------------   F(13, 98)       =    108.26
+       Model |  108.642877        13  8.35714437   Prob > F        =    0.0000
+    Residual |  7.56518907        98  .077195807   R-squared       =    0.9349
+-------------+----------------------------------   Adj R-squared   =    0.9263
+       Total |  116.208066       111  1.04691951   Root MSE        =    .27784
+
+-------------------------------------------------------------------------------------
+               ln_y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------------+----------------------------------------------------------------
+          stability |  -.0711935   .0442547    -1.61   0.111    -.1590155    .0166285
+competitiveness_leg |  -6.068223   1.694373    -3.58   0.001     -9.43065   -2.705795
+            ext_bal |   .1504885   .0359912     4.18   0.000     .0790651    .2219119
+              voice |   .1952061   .0649451     3.01   0.003     .0663247    .3240876
+           military |   -.085722   .0349893    -2.45   0.016    -.1551572   -.0162868
+            fem_emp |  -.0923154   .0301971    -3.06   0.003    -.1522406   -.0323902
+            yrsoffc |   .1302375   .0359377     3.62   0.000     .0589203    .2015547
+           inf_mort |  -.3211973   .1010558    -3.18   0.002    -.5217392   -.1206553
+               lexp |  -.1252199   .0832654    -1.50   0.136    -.2904575    .0400176
+         corruption |   .2873472    .058814     4.89   0.000     .1706328    .4040617
+      parliamentary |   .1092094   .0386266     2.83   0.006     .0325561    .1858627
+      age_dep_young |  -.2405685   .0638188    -3.77   0.000    -.3672148   -.1139221
+              urban |    .169287   .0457238     3.70   0.000     .0785496    .2600243
+              _cons |    .422146   .1251501     3.37   0.001     .1737897    .6705022
+-------------------------------------------------------------------------------------
+
+. 
+.         log close 
+      name:  <unnamed>
+       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Emp
+> irical Economics/Problem Set/Fadhil Nadhif Muharam/Task4/Analysis/Results/Task4.log
+  log type:  text
+ closed on:  26 Sep 2023, 15:10:20
+--------------------------------------------------------------------------------------------------------------
