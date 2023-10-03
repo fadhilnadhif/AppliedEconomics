@@ -1,0 +1,1606 @@
+--------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Emp
+> irical Economics/Problem Set/Fadhil Nadhif Muharam/Task5/Communications/Log/Task5.log
+  log type:  text
+ opened on:   3 Oct 2023, 11:05:26
+
+.         
+.         ** SET GLOBAL OF ALL COVARIATES
+.         global MAIN                     "female black hispanic othrace dep q1-q6 recall agelt35 agegt54 dura
+> ble nondurable husd loc_10404-loc_10880"
+
+.         global SECORDER         "*X*"
+
+.         global ALLCOV           "$MAIN $SECORDER"
+
+.         
+.         ** SET SEED
+.         set seed 20231002
+
+. 
+. /*=========================================================================*/
+. /*                       CROSS-FIT PARTIALING OUT                          */
+. /*=========================================================================*/
+. eststo clear
+
+. use "$inputpath/LassoAnalysis.dta", clear       
+
+. 
+.         * Plugin-formula
+.         eststo a1: xporegress loginuidur treatment, controls($ALLCOV) sel(plugin)  ///
+>                                            cluster(abdt) xfold(5) resample(10) 
+
+Resample 1 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Cross-fit partialing-out             Number of obs                =      5,099
+linear model                         Number of controls           =      1,498
+                                     Number of selected controls  =         59
+                                     Number of folds in cross-fit =          5
+                                     Number of resamples          =         10
+                                     Wald chi2(1)                 =       5.27
+                                     Prob > chi2                  =     0.0217
+
+                                  (Std. err. adjusted for 69 clusters in abdt)
+------------------------------------------------------------------------------
+             |               Robust
+  loginuidur | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   treatment |   -.081442    .035479    -2.30   0.022    -.1509795   -.0119045
+------------------------------------------------------------------------------
+Note: Chi-squared test is a Wald test of the coefficients of the variables
+      of interest jointly equal to zero. Lassos select controls for model
+      estimation. Type lassoinfo to see number of selected variables in each
+      lasso.
+Note: Lassos are performed accounting for clusters in abdt.
+
+.         lassoinfo, each
+
+    Estimate: active
+     Command: xporegress
+----------------------------------------------------------------------
+            |                                                   No. of
+  Dependent |           Selection Resample  xfold             selected
+   variable |    Model     method   number    no.    lambda  variables
+------------+---------------------------------------------------------
+ loginuidur |   linear     plugin        1      1  .0750276          6
+ loginuidur |   linear     plugin        1      2  .0750779          4
+ loginuidur |   linear     plugin        1      3  .0750697          4
+ loginuidur |   linear     plugin        1      4  .0750861          4
+ loginuidur |   linear     plugin        1      5   .075045          3
+ loginuidur |   linear     plugin        2      1  .0750851          4
+ loginuidur |   linear     plugin        2      2  .0750367          3
+ loginuidur |   linear     plugin        2      3  .0750656          4
+ loginuidur |   linear     plugin        2      4   .075082          5
+ loginuidur |   linear     plugin        2      5  .0750491          4
+ loginuidur |   linear     plugin        3      1  .0750606          5
+ loginuidur |   linear     plugin        3      2  .0750574          4
+ loginuidur |   linear     plugin        3      3   .075082          5
+ loginuidur |   linear     plugin        3      4  .0750861          4
+ loginuidur |   linear     plugin        3      5  .0750284          5
+ loginuidur |   linear     plugin        4      1  .0750318          3
+ loginuidur |   linear     plugin        4      2  .0750491          4
+ loginuidur |   linear     plugin        4      3  .0750491          4
+ loginuidur |   linear     plugin        4      4  .0751064          3
+ loginuidur |   linear     plugin        4      5   .075082          3
+ loginuidur |   linear     plugin        5      1  .0750276          3
+ loginuidur |   linear     plugin        5      2  .0750697          4
+ loginuidur |   linear     plugin        5      3  .0750779          4
+ loginuidur |   linear     plugin        5      4  .0750697          4
+ loginuidur |   linear     plugin        5      5  .0750779          5
+ loginuidur |   linear     plugin        6      1  .0750647          5
+ loginuidur |   linear     plugin        6      2  .0750574          5
+ loginuidur |   linear     plugin        6      3  .0750901          5
+ loginuidur |   linear     plugin        6      4  .0750409          4
+ loginuidur |   linear     plugin        6      5  .0750491          4
+ loginuidur |   linear     plugin        7      1  .0750688          4
+ loginuidur |   linear     plugin        7      2  .0750532          4
+ loginuidur |   linear     plugin        7      3  .0750656          5
+ loginuidur |   linear     plugin        7      4  .0750326          7
+ loginuidur |   linear     plugin        7      5   .075082          3
+ loginuidur |   linear     plugin        8      1   .075077          4
+ loginuidur |   linear     plugin        8      2  .0750697          4
+ loginuidur |   linear     plugin        8      3  .0750574          3
+ loginuidur |   linear     plugin        8      4   .075045          4
+ loginuidur |   linear     plugin        8      5  .0750779          5
+ loginuidur |   linear     plugin        9      1  .0750647          4
+ loginuidur |   linear     plugin        9      2  .0750201          5
+ loginuidur |   linear     plugin        9      3  .0750779          6
+ loginuidur |   linear     plugin        9      4  .0750901          4
+ loginuidur |   linear     plugin        9      5  .0750574          5
+ loginuidur |   linear     plugin       10      1  .0750606          3
+ loginuidur |   linear     plugin       10      2  .0750697          5
+ loginuidur |   linear     plugin       10      3  .0750779          4
+ loginuidur |   linear     plugin       10      4  .0750409          3
+ loginuidur |   linear     plugin       10      5  .0750738          5
+  treatment |   linear     plugin        1      1  .0750276          2
+  treatment |   linear     plugin        1      2  .0750779          4
+  treatment |   linear     plugin        1      3  .0750697          2
+  treatment |   linear     plugin        1      4  .0750861          3
+  treatment |   linear     plugin        1      5   .075045          0
+  treatment |   linear     plugin        2      1  .0750851          2
+  treatment |   linear     plugin        2      2  .0750367          1
+  treatment |   linear     plugin        2      3  .0750656         12
+  treatment |   linear     plugin        2      4   .075082          1
+  treatment |   linear     plugin        2      5  .0750491          0
+  treatment |   linear     plugin        3      1  .0750606          4
+  treatment |   linear     plugin        3      2  .0750574          2
+  treatment |   linear     plugin        3      3   .075082          1
+  treatment |   linear     plugin        3      4  .0750861         10
+  treatment |   linear     plugin        3      5  .0750284          3
+  treatment |   linear     plugin        4      1  .0750318          2
+  treatment |   linear     plugin        4      2  .0750491          2
+  treatment |   linear     plugin        4      3  .0750491          1
+  treatment |   linear     plugin        4      4  .0751064          3
+  treatment |   linear     plugin        4      5   .075082          3
+  treatment |   linear     plugin        5      1  .0750276          1
+  treatment |   linear     plugin        5      2  .0750697          2
+  treatment |   linear     plugin        5      3  .0750779          6
+  treatment |   linear     plugin        5      4  .0750697          1
+  treatment |   linear     plugin        5      5  .0750779          2
+  treatment |   linear     plugin        6      1  .0750647          2
+  treatment |   linear     plugin        6      2  .0750574          2
+  treatment |   linear     plugin        6      3  .0750901         10
+  treatment |   linear     plugin        6      4  .0750409          0
+  treatment |   linear     plugin        6      5  .0750491          2
+  treatment |   linear     plugin        7      1  .0750688          0
+  treatment |   linear     plugin        7      2  .0750532          1
+  treatment |   linear     plugin        7      3  .0750656          4
+  treatment |   linear     plugin        7      4  .0750326          1
+  treatment |   linear     plugin        7      5   .075082          1
+  treatment |   linear     plugin        8      1   .075077          1
+  treatment |   linear     plugin        8      2  .0750697          4
+  treatment |   linear     plugin        8      3  .0750574          1
+  treatment |   linear     plugin        8      4   .075045          2
+  treatment |   linear     plugin        8      5  .0750779          2
+  treatment |   linear     plugin        9      1  .0750647          2
+  treatment |   linear     plugin        9      2  .0750201          3
+  treatment |   linear     plugin        9      3  .0750779          2
+  treatment |   linear     plugin        9      4  .0750901          0
+  treatment |   linear     plugin        9      5  .0750574          3
+  treatment |   linear     plugin       10      1  .0750606          1
+  treatment |   linear     plugin       10      2  .0750697          0
+  treatment |   linear     plugin       10      3  .0750779          9
+  treatment |   linear     plugin       10      4  .0750409          3
+  treatment |   linear     plugin       10      5  .0750738          2
+----------------------------------------------------------------------
+
+.         mat B1 = r(table)
+
+.         esttab matrix(B1) using "$outputpath/LassoInfo_PF.tex", replace nomtitles label
+(output written to Analysis/Results/LassoInfo_PF.tex)
+
+.         
+.         lassocoef (.,for(loginuidur) xfold(3) resample(5)) ///
+>                           (.,for(treatment) xfold(3) resample(5))
+
+--------------------------------------------------
+                   | loginuidur_3_5 treatment_3_5 
+-------------------+------------------------------
+            recall |       x       
+             q6Xq6 |       x       
+             q6Xq2 |       x       
+      husdXagelt35 |       x       
+ loc_10677Xothrace |                      x       
+ loc_10691Xothrace |                      x       
+ loc_10698Xothrace |                      x       
+ loc_10726Xothrace |                      x       
+ loc_10754Xothrace |                      x       
+loc_10866Xhispanic |                      x       
+             _cons |       x              x       
+--------------------------------------------------
+Legend:
+  b - base level
+  e - empty cell
+  o - omitted
+  x - estimated
+
+.         mat C1 = r(coef)
+
+.         esttab matrix(C1) using "$outputpath/LassoCoef_PF.tex", replace nomtitles label
+(output written to Analysis/Results/LassoCoef_PF.tex)
+
+. 
+.         
+.         * Always select, plugin-formula
+.         eststo a2: xporegress loginuidur treatment, controls(($MAIN) $SECORDER)  ///
+>                                                   sel(plugin) cluster(abdt) xfold(5) resample(10)
+
+Resample 1 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 1 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 1 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 1 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 1 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 2 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 2 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10418 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10418 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 2 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 2 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 2 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 3 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 3 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 3 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 3 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 3 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 4 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 4 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 4 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 4 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 4 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 5 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 5 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 5 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 5 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 5 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 6 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 6 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 6 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 6 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 6 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 7 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 7 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 7 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 7 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 7 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 8 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 8 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 8 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 8 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 8 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 9 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 9 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 9 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 9 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 9 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 10 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10404 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 10 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10418 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 10 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10453 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 10 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Resample 10 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+.note: loc_10488 omitted because of collinearity.
+note: loc_10495 omitted because of collinearity.
+note: loc_10880 omitted because of collinearity.
+
+
+Cross-fit partialing-out             Number of obs                =      5,099
+linear model                         Number of controls           =      1,498
+                                     Number of selected controls  =        117
+                                     Number of folds in cross-fit =          5
+                                     Number of resamples          =         10
+                                     Wald chi2(1)                 =       3.83
+                                     Prob > chi2                  =     0.0503
+
+                                  (Std. err. adjusted for 69 clusters in abdt)
+------------------------------------------------------------------------------
+             |               Robust
+  loginuidur | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   treatment |  -.0688707    .035188    -1.96   0.050    -.1378379    .0000964
+------------------------------------------------------------------------------
+Note: Chi-squared test is a Wald test of the coefficients of the variables
+      of interest jointly equal to zero. Lassos select controls for model
+      estimation. Type lassoinfo to see number of selected variables in each
+      lasso.
+Note: Lassos are performed accounting for clusters in abdt.
+
+.                                                   
+.         lassoinfo, each
+
+    Estimate: active
+     Command: xporegress
+----------------------------------------------------------------------
+            |                                                   No. of
+  Dependent |           Selection Resample  xfold             selected
+   variable |    Model     method   number    no.    lambda  variables
+------------+---------------------------------------------------------
+ loginuidur |   linear     plugin        1      1  .0748495         88
+ loginuidur |   linear     plugin        1      2  .0748279         87
+ loginuidur |   linear     plugin        1      3  .0748629         86
+ loginuidur |   linear     plugin        1      4  .0748235         88
+ loginuidur |   linear     plugin        1      5  .0748629         86
+ loginuidur |   linear     plugin        2      1  .0748798         86
+ loginuidur |   linear     plugin        2      2  .0748454         87
+ loginuidur |   linear     plugin        2      3  .0748802         87
+ loginuidur |   linear     plugin        2      4  .0748454         88
+ loginuidur |   linear     plugin        2      5  .0748542         88
+ loginuidur |   linear     plugin        3      1  .0748495         86
+ loginuidur |   linear     plugin        3      2  .0748367         87
+ loginuidur |   linear     plugin        3      3  .0748715         87
+ loginuidur |   linear     plugin        3      4  .0748715         86
+ loginuidur |   linear     plugin        3      5  .0748672         88
+ loginuidur |   linear     plugin        4      1  .0748276         87
+ loginuidur |   linear     plugin        4      2  .0748585         86
+ loginuidur |   linear     plugin        4      3  .0748411         88
+ loginuidur |   linear     plugin        4      4  .0748498         87
+ loginuidur |   linear     plugin        4      5  .0748759         89
+ loginuidur |   linear     plugin        5      1  .0748798         88
+ loginuidur |   linear     plugin        5      2  .0748672         87
+ loginuidur |   linear     plugin        5      3  .0748931         86
+ loginuidur |   linear     plugin        5      4  .0748367         87
+ loginuidur |   linear     plugin        5      5  .0748672         87
+ loginuidur |   linear     plugin        6      1  .0748755         86
+ loginuidur |   linear     plugin        6      2  .0748585         87
+ loginuidur |   linear     plugin        6      3  .0748192         87
+ loginuidur |   linear     plugin        6      4  .0748888         87
+ loginuidur |   linear     plugin        6      5  .0748715         87
+ loginuidur |   linear     plugin        7      1  .0749055         87
+ loginuidur |   linear     plugin        7      2  .0748585         88
+ loginuidur |   linear     plugin        7      3  .0748367         87
+ loginuidur |   linear     plugin        7      4  .0748715         87
+ loginuidur |   linear     plugin        7      5  .0748802         86
+ loginuidur |   linear     plugin        8      1  .0748451         86
+ loginuidur |   linear     plugin        8      2  .0748802         88
+ loginuidur |   linear     plugin        8      3  .0748629         88
+ loginuidur |   linear     plugin        8      4  .0748759         87
+ loginuidur |   linear     plugin        8      5  .0748759         87
+ loginuidur |   linear     plugin        9      1  .0748841         89
+ loginuidur |   linear     plugin        9      2  .0748931         87
+ loginuidur |   linear     plugin        9      3  .0748585         86
+ loginuidur |   linear     plugin        9      4  .0748974         87
+ loginuidur |   linear     plugin        9      5  .0747971         86
+ loginuidur |   linear     plugin       10      1  .0748364         87
+ loginuidur |   linear     plugin       10      2  .0748367         88
+ loginuidur |   linear     plugin       10      3   .074906         86
+ loginuidur |   linear     plugin       10      4  .0748498         87
+ loginuidur |   linear     plugin       10      5  .0748498         88
+  treatment |   linear     plugin        1      1  .0748407         87
+  treatment |   linear     plugin        1      2  .0749189         87
+  treatment |   linear     plugin        1      3  .0748715         91
+  treatment |   linear     plugin        1      4  .0748802         86
+  treatment |   linear     plugin        1      5  .0748672         88
+  treatment |   linear     plugin        2      1  .0748495         87
+  treatment |   linear     plugin        2      2  .0748454         88
+  treatment |   linear     plugin        2      3  .0748802         90
+  treatment |   linear     plugin        2      4  .0748454         87
+  treatment |   linear     plugin        2      5  .0748888         86
+  treatment |   linear     plugin        3      1  .0748581         86
+  treatment |   linear     plugin        3      2  .0748323         88
+  treatment |   linear     plugin        3      3  .0748974         87
+  treatment |   linear     plugin        3      4  .0748672         86
+  treatment |   linear     plugin        3      5  .0748542         87
+  treatment |   linear     plugin        4      1  .0748407         88
+  treatment |   linear     plugin        4      2  .0748802         86
+  treatment |   linear     plugin        4      3  .0748367         90
+  treatment |   linear     plugin        4      4  .0748672         89
+  treatment |   linear     plugin        4      5  .0748585         87
+  treatment |   linear     plugin        5      1  .0748581         88
+  treatment |   linear     plugin        5      2  .0748411         86
+  treatment |   linear     plugin        5      3  .0748802         87
+  treatment |   linear     plugin        5      4  .0748148         88
+  treatment |   linear     plugin        5      5  .0749017         92
+  treatment |   linear     plugin        6      1  .0748276         88
+  treatment |   linear     plugin        6      2  .0748323         86
+  treatment |   linear     plugin        6      3  .0747838         88
+  treatment |   linear     plugin        6      4  .0748888         87
+  treatment |   linear     plugin        6      5  .0748845         86
+  treatment |   linear     plugin        7      1  .0748711         88
+  treatment |   linear     plugin        7      2  .0748542         88
+  treatment |   linear     plugin        7      3  .0748454         86
+  treatment |   linear     plugin        7      4  .0748672         88
+  treatment |   linear     plugin        7      5  .0748715         87
+  treatment |   linear     plugin        8      1  .0748407         89
+  treatment |   linear     plugin        8      2  .0748629         87
+  treatment |   linear     plugin        8      3  .0748585         86
+  treatment |   linear     plugin        8      4  .0748759         87
+  treatment |   linear     plugin        8      5  .0748845         88
+  treatment |   linear     plugin        9      1  .0748711         86
+  treatment |   linear     plugin        9      2  .0748585         88
+  treatment |   linear     plugin        9      3  .0748629         91
+  treatment |   linear     plugin        9      4  .0748411         86
+  treatment |   linear     plugin        9      5  .0747927         89
+  treatment |   linear     plugin       10      1  .0748451         88
+  treatment |   linear     plugin       10      2  .0748498         86
+  treatment |   linear     plugin       10      3  .0748888         88
+  treatment |   linear     plugin       10      4  .0748759         87
+  treatment |   linear     plugin       10      5  .0748367         87
+----------------------------------------------------------------------
+
+.         mat B2 = r(table)
+
+.         esttab matrix(B2) using "$outputpath/LassoInfo_PF-AS.tex", replace nomtitles label
+(output written to Analysis/Results/LassoInfo_PF-AS.tex)
+
+.         
+.         lassocoef (.,for(loginuidur) xfold(3) resample(5)) ///
+>                           (.,for(treatment) xfold(3) resample(5))
+
+--------------------------------------------------
+                   | loginuidur_3_5 treatment_3_5 
+-------------------+------------------------------
+            female |       x              x       
+             black |       x              x       
+          hispanic |       x              x       
+           othrace |       x              x       
+               dep |       x              x       
+                q1 |       x              x       
+                q2 |       x              x       
+                q3 |       x              x       
+                q4 |       x              x       
+                q5 |       x              x       
+                q6 |       x              x       
+            recall |       x              x       
+           agelt35 |       x              x       
+           agegt54 |       x              x       
+           durable |       x              x       
+        nondurable |       x              x       
+              husd |       x              x       
+         loc_10404 |       x              x       
+         loc_10411 |       x              x       
+         loc_10418 |       x              x       
+         loc_10425 |       x              x       
+         loc_10432 |       x              x       
+         loc_10439 |       x              x       
+         loc_10446 |       x              x       
+         loc_10453 |       x              x       
+         loc_10460 |       x              x       
+         loc_10467 |       x              x       
+         loc_10474 |       x              x       
+         loc_10481 |       x              x       
+         loc_10488 |       x              x       
+         loc_10495 |       o              o       
+         loc_10502 |       x              x       
+         loc_10509 |       x              x       
+         loc_10516 |       x              x       
+         loc_10523 |       x              x       
+         loc_10530 |       x              x       
+         loc_10537 |       x              x       
+         loc_10544 |       x              x       
+         loc_10551 |       x              x       
+         loc_10558 |       x              x       
+         loc_10565 |       x              x       
+         loc_10572 |       x              x       
+         loc_10579 |       x              x       
+         loc_10586 |       x              x       
+         loc_10593 |       x              x       
+         loc_10600 |       x              x       
+         loc_10607 |       x              x       
+         loc_10614 |       x              x       
+         loc_10621 |       x              x       
+         loc_10628 |       x              x       
+         loc_10635 |       x              x       
+         loc_10642 |       x              x       
+         loc_10649 |       x              x       
+         loc_10656 |       x              x       
+         loc_10663 |       x              x       
+         loc_10670 |       x              x       
+         loc_10677 |       x              x       
+         loc_10684 |       x              x       
+         loc_10691 |       x              x       
+         loc_10698 |       x              x       
+         loc_10705 |       x              x       
+         loc_10712 |       x              x       
+         loc_10719 |       x              x       
+         loc_10726 |       x              x       
+         loc_10733 |       x              x       
+         loc_10740 |       x              x       
+         loc_10747 |       x              x       
+         loc_10754 |       x              x       
+         loc_10761 |       x              x       
+         loc_10768 |       x              x       
+         loc_10775 |       x              x       
+         loc_10782 |       x              x       
+         loc_10789 |       x              x       
+         loc_10796 |       x              x       
+         loc_10803 |       x              x       
+         loc_10810 |       x              x       
+         loc_10817 |       x              x       
+         loc_10824 |       x              x       
+         loc_10831 |       x              x       
+         loc_10838 |       x              x       
+         loc_10845 |       x              x       
+         loc_10852 |       x              x       
+         loc_10859 |       x              x       
+         loc_10866 |       x              x       
+         loc_10873 |       x              x       
+         loc_10880 |       o              o       
+loc_10579Xhispanic |                      x       
+             _cons |       x              x       
+--------------------------------------------------
+Legend:
+  b - base level
+  e - empty cell
+  o - omitted
+  x - estimated
+
+.         mat C2 = r(coef)
+
+.         esttab matrix(C2) using "$outputpath/LassoCoef_PF-AS.tex", replace nomtitles label
+(output written to Analysis/Results/LassoCoef_PF-AS.tex)
+
+.                          
+.                          
+.         * Cross-validation
+.         eststo a3: xporegress loginuidur treatment, controls($ALLCOV) sel(cv) ///
+>                                            cluster(abdt) xfold(5) resample(10)
+
+Resample 1 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 1 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 2 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 3 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 4 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 5 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 6 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 7 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 8 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 9 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 1 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 2 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 3 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 4 of 5 ...
+Estimating lassos: 1.
+
+Resample 10 of 10 ...
+Cross-fit fold 5 of 5 ...
+Estimating lassos: 1.
+
+Cross-fit partialing-out             Number of obs                =      5,099
+linear model                         Number of controls           =      1,498
+                                     Number of selected controls  =        522
+                                     Number of folds in cross-fit =          5
+                                     Number of resamples          =         10
+                                     Wald chi2(1)                 =       5.31
+                                     Prob > chi2                  =     0.0212
+
+                                  (Std. err. adjusted for 69 clusters in abdt)
+------------------------------------------------------------------------------
+             |               Robust
+  loginuidur | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   treatment |  -.0823019   .0357116    -2.30   0.021    -.1522955   -.0123084
+------------------------------------------------------------------------------
+Note: Chi-squared test is a Wald test of the coefficients of the variables
+      of interest jointly equal to zero. Lassos select controls for model
+      estimation. Type lassoinfo to see number of selected variables in each
+      lasso.
+Note: Lassos are performed accounting for clusters in abdt.
+
+.         lassoinfo, each
+
+    Estimate: active
+     Command: xporegress
+-------------------------------------------------------------------------------
+            |                                                            No. of
+  Dependent |           Selection Resample  xfold  Selection               sel.
+   variable |    Model     method   number    no.  criterion    lambda     var.
+------------+------------------------------------------------------------------
+ loginuidur |   linear         cv        1      1    CV min.  .0283441      109
+ loginuidur |   linear         cv        1      2    CV min.  .0327521       70
+ loginuidur |   linear         cv        1      3    CV min.  .0226128      171
+ loginuidur |   linear         cv        1      4    CV min.  .0287722      111
+ loginuidur |   linear         cv        1      5    CV min.  .0263297      118
+ loginuidur |   linear         cv        2      1    CV min.  .0316371       89
+ loginuidur |   linear         cv        2      2    CV min.  .0277433      118
+ loginuidur |   linear         cv        2      3    CV min.  .0286468      109
+ loginuidur |   linear         cv        2      4    CV min.  .0257292      145
+ loginuidur |   linear         cv        2      5    CV min.  .0236923      155
+ loginuidur |   linear         cv        3      1    CV min.  .0272044      127
+ loginuidur |   linear         cv        3      2    CV min.  .0261429      121
+ loginuidur |   linear         cv        3      3    CV min.  .0263251      132
+ loginuidur |   linear         cv        3      4    CV min.  .0311569       93
+ loginuidur |   linear         cv        3      5    CV min.  .0284377      117
+ loginuidur |   linear         cv        4      1    CV min.  .0270826      122
+ loginuidur |   linear         cv        4      2    CV min.   .027784      116
+ loginuidur |   linear         cv        4      3    CV min.  .0257685      133
+ loginuidur |   linear         cv        4      4    CV min.   .023484      147
+ loginuidur |   linear         cv        4      5    CV min.  .0297331      116
+ loginuidur |   linear         cv        5      1    CV min.  .0247635      154
+ loginuidur |   linear         cv        5      2    CV min.  .0281957      105
+ loginuidur |   linear         cv        5      3    CV min.  .0299684       98
+ loginuidur |   linear         cv        5      4    CV min.  .0257743      130
+ loginuidur |   linear         cv        5      5    CV min.  .0291404      106
+ loginuidur |   linear         cv        6      1    CV min.  .0253261      152
+ loginuidur |   linear         cv        6      2    CV min.  .0344363       66
+ loginuidur |   linear         cv        6      3    CV min.  .0243924      157
+ loginuidur |   linear         cv        6      4    CV min.   .025424      132
+ loginuidur |   linear         cv        6      5    CV min.  .0278583      110
+ loginuidur |   linear         cv        7      1    CV min.   .028877      112
+ loginuidur |   linear         cv        7      2    CV min.  .0270051      131
+ loginuidur |   linear         cv        7      3    CV min.   .026942      116
+ loginuidur |   linear         cv        7      4    CV min.   .022819      165
+ loginuidur |   linear         cv        7      5    CV min.  .0276191      125
+ loginuidur |   linear         cv        8      1    CV min.  .0235992      159
+ loginuidur |   linear         cv        8      2    CV min.  .0279658      121
+ loginuidur |   linear         cv        8      3    CV min.  .0331935       86
+ loginuidur |   linear         cv        8      4    CV min.  .0285506      110
+ loginuidur |   linear         cv        8      5    CV min.  .0286732      106
+ loginuidur |   linear         cv        9      1    CV min.  .0259998      132
+ loginuidur |   linear         cv        9      2    CV min.  .0263981      113
+ loginuidur |   linear         cv        9      3    CV min.  .0293495      110
+ loginuidur |   linear         cv        9      4    CV min.  .0322205       88
+ loginuidur |   linear         cv        9      5    CV min.  .0328922       84
+ loginuidur |   linear         cv       10      1    CV min.   .025158      134
+ loginuidur |   linear         cv       10      2    CV min.  .0255433      144
+ loginuidur |   linear         cv       10      3    CV min.  .0294839      108
+ loginuidur |   linear         cv       10      4    CV min.  .0269955      120
+ loginuidur |   linear         cv       10      5    CV min.  .0330868       70
+  treatment |   linear         cv        1      1    CV min.  .0219511        0
+  treatment |   linear         cv        1      2    CV min.  .0206463        0
+  treatment |   linear         cv        1      3    CV min.  .0213385        0
+  treatment |   linear         cv        1      4    CV min.  .0233642        0
+  treatment |   linear         cv        1      5    CV min.  .0169931       17
+  treatment |   linear         cv        2      1    CV min.   .023069        0
+  treatment |   linear         cv        2      2    CV min.  .0231805        0
+  treatment |   linear         cv        2      3    CV min.  .0247928        0
+  treatment |   linear         cv        2      4    CV min.  .0155535       24
+  treatment |   linear         cv        2      5    CV min.  .0208933        0
+  treatment |   linear         cv        3      1    CV min.  .0229746        0
+  treatment |   linear         cv        3      2    CV min.  .0236595        0
+  treatment |   linear         cv        3      3    CV min.  .0236595        0
+  treatment |   linear         cv        3      4    CV min.  .0225823        0
+  treatment |   linear         cv        3      5    CV min.  .0172168       17
+  treatment |   linear         cv        4      1    CV min.  .0240035        0
+  treatment |   linear         cv        4      2    CV min.  .0230002        0
+  treatment |   linear         cv        4      3    CV min.  .0217962        0
+  treatment |   linear         cv        4      4    CV min.  .0226121        3
+  treatment |   linear         cv        4      5    CV min.   .019178        0
+  treatment |   linear         cv        5      1    CV min.  .0195481        7
+  treatment |   linear         cv        5      2    CV min.  .0213241        0
+  treatment |   linear         cv        5      3    CV min.  .0216637        0
+  treatment |   linear         cv        5      4    CV min.  .0203774        0
+  treatment |   linear         cv        5      5    CV min.   .020654        0
+  treatment |   linear         cv        6      1    CV min.  .0232836        0
+  treatment |   linear         cv        6      2    CV min.  .0212831        0
+  treatment |   linear         cv        6      3    CV min.  .0217595        0
+  treatment |   linear         cv        6      4    CV min.  .0237697        0
+  treatment |   linear         cv        6      5    CV min.  .0225413        2
+  treatment |   linear         cv        7      1    CV min.   .022144        0
+  treatment |   linear         cv        7      2    CV min.  .0242454        0
+  treatment |   linear         cv        7      3    CV min.  .0192895        5
+  treatment |   linear         cv        7      4    CV min.  .0151575       29
+  treatment |   linear         cv        7      5    CV min.  .0201022        6
+  treatment |   linear         cv        8      1    CV min.  .0226554        0
+  treatment |   linear         cv        8      2    CV min.  .0136933       39
+  treatment |   linear         cv        8      3    CV min.  .0231376        0
+  treatment |   linear         cv        8      4    CV min.  .0252984        0
+  treatment |   linear         cv        8      5    CV min.  .0217093        0
+  treatment |   linear         cv        9      1    CV min.  .0228887        0
+  treatment |   linear         cv        9      2    CV min.  .0230174        0
+  treatment |   linear         cv        9      3    CV min.  .0159123       26
+  treatment |   linear         cv        9      4    CV min.  .0227675        1
+  treatment |   linear         cv        9      5    CV min.  .0247809        0
+  treatment |   linear         cv       10      1    CV min.  .0266914        0
+  treatment |   linear         cv       10      2    CV min.  .0207654        0
+  treatment |   linear         cv       10      3    CV min.  .0212673        0
+  treatment |   linear         cv       10      4    CV min.  .0235174        0
+  treatment |   linear         cv       10      5    CV min.  .0230174        0
+-------------------------------------------------------------------------------
+
+.         mat B3 = r(table)
+
+.         esttab matrix(B3) using "$outputpath/LassoInfo_CV.tex", replace nomtitles label
+(output written to Analysis/Results/LassoInfo_CV.tex)
+
+.         
+.         lassocoef (.,for(loginuidur) xfold(3) resample(5)) ///
+>                           (.,for(treatment) xfold(3) resample(5))
+
+----------------------------------------------------
+                     | loginuidur_3_5 treatment_3_5 
+---------------------+------------------------------
+             agegt54 |       x       
+           loc_10593 |       x       
+           loc_10677 |       x       
+           loc_10782 |       x       
+           loc_10796 |       x       
+       femaleXfemale |       x       
+        blackXfemale |       x       
+            q3Xblack |       x       
+         q3Xhispanic |       x       
+          q4Xothrace |       x       
+            q5Xblack |       x       
+          q5Xothrace |       x       
+              q5Xdep |       x       
+               q6Xq6 |       x       
+               q6Xq2 |       x       
+       recallXrecall |       x       
+           recallXq6 |       x       
+     agelt35Xagelt35 |       x       
+    agelt35Xhispanic |       x       
+     agelt35Xothrace |       x       
+          agelt35Xq3 |       x       
+          agelt35Xq5 |       x       
+      agegt54Xfemale |       x       
+     agegt54Xothrace |       x       
+      durableXfemale |       x       
+       durableXblack |       x       
+          durableXq6 |       x       
+ nondurableXhispanic |       x       
+   nondurableXrecall |       x       
+           husdXhusd |       x       
+          husdXblack |       x       
+             husdXq2 |       x       
+        husdXagelt35 |       x       
+    loc_10425Xfemale |       x       
+   loc_10474Xdurable |       x       
+        loc_10488Xq1 |       x       
+     loc_10516Xblack |       x       
+   loc_10516Xagegt54 |       x       
+    loc_10530Xfemale |       x       
+     loc_10537Xblack |       x       
+  loc_10544Xhispanic |       x       
+      loc_10565Xhusd |       x       
+   loc_10593Xagelt35 |       x       
+      loc_10593Xhusd |       x       
+   loc_10600Xagegt54 |       x       
+      loc_10614Xhusd |       x       
+   loc_10621Xdurable |       x       
+   loc_10628Xagelt35 |       x       
+   loc_10628Xdurable |       x       
+     loc_10635Xblack |       x       
+   loc_10635Xagegt54 |       x       
+loc_10642Xnondurable |       x       
+     loc_10663Xblack |       x       
+  loc_10663Xhispanic |       x       
+    loc_10670Xrecall |       x       
+        loc_10677Xq3 |       x       
+loc_10677Xnondurable |       x       
+   loc_10684Xagegt54 |       x       
+     loc_10705Xblack |       x       
+   loc_10726Xdurable |       x       
+    loc_10733Xfemale |       x       
+loc_10740Xnondurable |       x       
+   loc_10761Xagelt35 |       x       
+   loc_10761Xdurable |       x       
+  loc_10768Xhispanic |       x       
+        loc_10768Xq6 |       x       
+   loc_10768Xdurable |       x       
+  loc_10782Xhispanic |       x       
+       loc_10789Xdep |       x       
+    loc_10789Xrecall |       x       
+   loc_10789Xdurable |       x       
+  loc_10796Xhispanic |       x       
+    loc_10796Xrecall |       x       
+   loc_10803Xdurable |       x       
+  loc_10810Xhispanic |       x       
+loc_10810Xnondurable |       x       
+     loc_10824Xblack |       x       
+       loc_10824Xdep |       x       
+loc_10824Xnondurable |       x       
+      loc_10824Xhusd |       x       
+     loc_10831Xblack |       x       
+   loc_10831Xdurable |       x       
+loc_10831Xnondurable |       x       
+      loc_10831Xhusd |       x       
+   loc_10838Xothrace |       x       
+       loc_10838Xdep |       x       
+        loc_10838Xq6 |       x       
+    loc_10866Xfemale |       x       
+     loc_10866Xblack |       x       
+    loc_10873Xrecall |       x       
+   loc_10880Xagelt35 |       x       
+            depsqXq4 |       x       
+            depsqXq6 |       x       
+     depsqXloc_10537 |       x       
+     depsqXloc_10705 |       x       
+     depsqXloc_10754 |       x       
+     depsqXloc_10789 |       x       
+     depsqXloc_10796 |       x       
+               _cons |       x              x       
+----------------------------------------------------
+Legend:
+  b - base level
+  e - empty cell
+  o - omitted
+  x - estimated
+
+.         mat C3 = r(coef)
+
+.         esttab matrix(C3) using "$outputpath/LassoCoef_CV.tex", replace nomtitles label
+(output written to Analysis/Results/LassoCoef_CV.tex)
+
+.         
+.         * Consolidating coefficients into one table
+.         esttab a1 a2 a3 using "$outputpath/CFPartialOut.tex", replace se nomtitles label 
+(output written to Analysis/Results/CFPartialOut.tex)
+
+.                         
+. *** END OF DO FILE 
+.         log close 
+      name:  <unnamed>
+       log:  /Users/nadhif/Library/CloudStorage/OneDrive-HandelshögskolaniStockholm/PhD/Fall 2023/Applied Emp
+> irical Economics/Problem Set/Fadhil Nadhif Muharam/Task5/Communications/Log/Task5.log
+  log type:  text
+ closed on:   3 Oct 2023, 11:39:47
+--------------------------------------------------------------------------------------------------------------
