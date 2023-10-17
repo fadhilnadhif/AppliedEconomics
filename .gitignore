@@ -2,7 +2,7 @@
 *.dta
 Task2/Analysis/.DS_Store
 Task2/Communications/.DS_Store
-*.tex
 *.aux
 Task2/Communications/Results/ResultTables.log
 Task2/Communications/Results/ResultTables.synctex.gz
+*.DS_Store
