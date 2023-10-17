@@ -1,0 +1,201 @@
+\documentclass[10pt,leqno]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lscape}
+\pagenumbering{arabic}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{adjustbox}
+%\usepackage[landscape]{geometry}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{subfiles}
+\titlelabel{\thetitle.\quad}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{lastpage}
+\usepackage{palatino}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\title{Cluster and Principal Component Analysis\\
+Applied Empirical Economics I}
+\author{Fadhil Nadhif Muharam}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Cluster Analysis}
+\subsection{Non-normalized data}
+\begin{figure}  [h!]
+\subsubsection{Question clustering}
+\begin{center}
+\caption{Cluster analysis of questions with non-normalized data}
+\includegraphics[scale=0.15]{CA_QuestionK1_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK2_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK3_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK4_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK6_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK7_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK8_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK9_ORI.png}
+\includegraphics[scale=0.15]{CA_QuestionK10_ORI.png}
+\end{center}
+\end{figure}  
+
+Figure 1 shows the cluster analysis when grouping the questions for different numbers of clusters. The x-axis is the means of each question, and the y-axis is a random number assignment based on groups. The top left figure is when the data has not been clustered. Starting from K=4, we see that the data is well-clustered. My preference for the number of clusters is five depicted in figure 2 below. \\
+\\
+With five clusters, the questions are grouped into five clusters, namely, politics, life security, life importance, democracy and freedom, and traditional values explained in table 1. And as we can see, the cluster analysis provided a decent job in clustering questions that naturally belong to each other. However, there are some instances where this could be done better. For example, some of the questions regarding "confidence" are grouped into different categories, and some questions seem to not fit with the group theme. This problem could be made better with a unified scale of answers.
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Cluster analysis of questions with non-normalized data (K=5)}
+\includegraphics[scale=0.25]{CA_QuestionK5_ORI.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\subsubsection{Country clustering}
+\begin{center}
+\caption{Cluster analysis of country with non-normalized data}
+\includegraphics[scale=0.15]{CA_CountryK1_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK2_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK3_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK4_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK6_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK7_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK8_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK9_ORI.png}
+\includegraphics[scale=0.15]{CA_CountryK10_ORI.png}
+\end{center}
+Similar to the question clustering, figure 3 constitutes the clustering of countries with various numbers of clusters. The preferred number of cluster is five and is shown in figure 4.
+\end{figure}  
+\begin{figure}  [h!]
+\begin{center}
+\caption{Cluster analysis of country with non-normalized data (K=5)}
+\includegraphics[scale=0.25]{CA_CountryK5_ORI.png}
+\end{center}
+\end{figure}  
+
+\begin{table}[tbp]
+\centering
+\caption{List of cluster groups and questions for cluster analysis with K=5}
+\begin{adjustbox}{width=0.7\textwidth}
+\small
+\input{CA_QuestionsK5_ORI.tex}
+\end{adjustbox}
+\end{table}
+
+
+\pagebreak
+\begin{figure}  [h!]
+\subsection{Normalized data}
+\subsubsection{Question clustering}
+\begin{center}
+\caption{Cluster analysis of questions with normalized data}
+\includegraphics[scale=0.15]{CA_QuestionK1_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK2_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK3_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK4_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK6_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK7_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK8_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK9_NOR.png}
+\includegraphics[scale=0.15]{CA_QuestionK10_NOR.png}
+\end{center}
+By clustering the questions for the normalized data, we can see that the resulting groups seem to have a similar dispersion of means. This is because, the way we normalized the data is that it all centered around the mean zero and standard deviation one. However, the cluster analysis made it possible to define the pattern and do a good job in clustering it similarly to the ones with non-normalized data, which although it is not seem to be shown in the graph, the resulting groups are similar with the ones with non-normalized data. 
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Cluster analysis of questions with normalized data (K=5)}
+\includegraphics[scale=0.25]{CA_QuestionK5_NOR.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\subsubsection{Country clustering}
+\begin{center}
+\caption{Cluster analysis of country with normalized data}
+\includegraphics[scale=0.15]{CA_CountryK1_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK2_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK3_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK4_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK6_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK7_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK8_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK9_NOR.png}
+\includegraphics[scale=0.15]{CA_CountryK10_NOR.png}
+\end{center}
+We observe a similar pattern of clustering with the non-normalized data. This, in essence, makes sense due to the normalization that was done at the question level. Hence, unlike the normalized question clustering, we see that each cluster is grouped in a rather concentrated means. 
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Cluster analysis of country with normalized data (K=5)}
+\includegraphics[scale=0.25]{CA_CountryK5_NOR.png}
+\end{center}
+\end{figure}  
+
+
+
+\pagebreak
+\begin{figure}  [h!]
+\section{Principal Component Analysis}
+For the PCA, the figure depicted below is more of a biplot rather than a culture map. But this is interesting given how the interpretation could be different from the culture map depicted in the lecture note. The first component put more weight in the traditional values whereas the second component put more weight in the democracy and freedom. Table 2 and 3 presents how each questions are weighted in each component. I used the cluster analysis to group the countries, rather than area.
+\\
+\subsection{Non-normalized data}
+\begin{center}
+\caption{PCA culture map with non-normalized data}
+\includegraphics[scale=0.25]{PCA_CultureMap_ORI.png}
+\end{center}
+Seeing Figure 9, the result seem to show that countries with high democracy and freedom also upholds a higher traditional values. Which is quite contrasting to the result shown in the lecture note. 
+\end{figure} 
+
+\begin{table}[tbp]
+\centering
+\caption{PCA factor loading for two components (non-normalized data)}
+\begin{adjustbox}{width=0.7\textwidth}
+\small
+\input{PCA_FactorLoading_ORI.tex}
+\end{adjustbox}
+\end{table}
+
+\begin{figure}  [h!]
+\subsection{Normalized data}
+\begin{center}
+\caption{PCA culture map with normalized data}
+\includegraphics[scale=0.25]{PCA_CultureMap_NOR.png}
+\end{center}
+The result for the normalized data is similar to that of the non-normalized ones, but a bit more centered towards the mean zero. When seeing Table 2 and 3, there seem to be not much of a difference in terms how the PCA results constituted for the normalized and non-normalized data. 
+\end{figure} 
+
+\begin{table}[tbp]
+\centering
+\caption{PCA factor loading for two components (normalized data)}
+\begin{adjustbox}{width=0.7\textwidth}
+\small
+\input{PCA_FactorLoading_NOR.tex}
+\end{adjustbox}
+\end{table}
+
+\end{document}
+

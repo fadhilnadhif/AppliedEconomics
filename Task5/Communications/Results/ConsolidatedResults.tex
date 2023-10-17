@@ -1,0 +1,194 @@
+\documentclass[10pt,leqno]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lscape}
+\pagenumbering{arabic}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{adjustbox}
+%\usepackage[landscape]{geometry}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{subfiles}
+\titlelabel{\thetitle.\quad}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{lastpage}
+\usepackage{palatino}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\title{Task 5\\
+Applied Empirical Economics I}
+\author{Fadhil Nadhif Muharam}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Cross-fit Partial Out}
+
+\begin{table}[H]
+\centering
+\caption{Estimated effect of cash bonus on log unemployment duration}
+\input{CFPartialOut.tex}
+\end{table}
+
+From Table 1 above and comparing the results with Table 1 in Chernozhukov et al. (2018), the results for the plugin formula and cross-validation on the effect of the treatment on log unemployment are similar. Note that instead of resampling 15 times, I did it 10 times due to my computer limitations. 
+\\
+\\
+\textbf{Plugin-formula}. Using the plugin-formula, the coefficient in Table 1 is statistically significant at 5\% level. The specific number of covariates selected in each fold and resample is shown in Table 2. On average this method selects 5 covariates for log duration of unemployment and 3 for treatment. In Table 3, it is shown the covariates selected for fold 3 and resample 5.
+\\
+\\
+\textbf{Plugin-formula with always select}. Using the plugin-formula with always select, the coefficient in Table 1 is not statistically significant. The specific number of covariates selected in each fold and resample is shown in Table 4. On average this method selects 2 additional covariates on top of the always selected covariates for both log duration of unemployment and treatment. In Table 5, it is shown the covariates selected for fold 3 and resample 5.
+\\
+\\
+\textbf{Cross-validation}. Using the cross-validation, the coefficient in Table 1 is statistically significant at 5\% level. The specific number of covariates selected in each fold and resample is shown in Table 6. On average this method selects 97 covariates for log duration of unemployment and 16 for treatment. In Table 7, it is shown the covariates selected for fold 3 and resample 5.
+\\
+\pagebreak
+\subsection{Plugin Formula}
+\begin{table}[H]
+  \centering
+  \caption{Number of selected variables in each fold and resample (plugin-formula)}
+  \label{tab:1}
+  \resizebox{0.35\textwidth}{!}{
+   \input{LassoInfo_PF.tex} }
+\end{table}%
+
+\begin{table}[H]
+  \centering
+  \caption{Selected variables (fold 3, resample 5) - (plugin-formula)}
+  \label{tab:1}
+  \resizebox{0.5\textwidth}{!}{
+   \input{LassoCoef_PF.tex} }
+\end{table}%
+
+\pagebreak
+\subsection{Plugin Formula with Always Select}
+\begin{table}[H]
+  \centering
+  \caption{Number of selected variables in each fold and resample (plugin-formula, always select)}
+  \label{tab:1}
+  \resizebox{0.35\textwidth}{!}{
+   \input{LassoInfo_PF-AS.tex} }
+\end{table}%
+
+\begin{table}[H]
+  \centering
+  \caption{Selected variables (fold 3, resample 5) - (plugin-formula, always select)}
+  \label{tab:1}
+  \resizebox{0.35\textwidth}{!}{
+   \input{LassoCoef_PF-AS.tex} }
+\end{table}%
+
+\pagebreak
+\subsection{Cross Validation}
+
+\begin{table}[H]
+  \centering
+  \caption{Number of selected variables in each fold and resample (cross validation)}
+  \label{tab:1}
+  \resizebox{0.35\textwidth}{!}{
+   \input{LassoInfo_CV.tex} }
+\end{table}%
+
+\begin{table}[H]
+  \centering
+  \caption{Selected variables (fold 3, resample 5) - (cross validation)}
+  \label{tab:1}
+  \resizebox{0.35\textwidth}{!}{
+   \input{LassoCoef_CV.tex} }
+\end{table}%
+
+
+\pagebreak
+\section{Random Forest}
+\subsection{Within-time period prediction}
+\begin{figure}  [h!]
+\begin{center}
+\caption{Best tree}
+\includegraphics[scale=0.4]{BestTree_RF1.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Tree plot}
+\includegraphics[scale=0.2]{TreePlot_RF1.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Random forest regressor}
+\includegraphics[scale=0.4]{RFRegressor_RF1.png}
+\end{center}
+\end{figure}  
+
+\pagebreak
+\subsection{Out-of-sample prediction}
+\begin{figure}  [h!]
+\begin{center}
+\caption{Best tree}
+\includegraphics[scale=0.4]{BestTree_RF2.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Tree plot}
+\includegraphics[scale=0.3]{TreePlot_RF2.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Random forest regressor}
+\includegraphics[scale=0.4]{RFRegressor_RF2.png}
+\end{center}
+\end{figure}  
+
+\pagebreak
+\subsection{Testing for changing data generating process}
+\begin{figure}  [h!]
+\begin{center}
+\caption{Best tree}
+\includegraphics[scale=0.4]{BestTree_RF3.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Tree plot}
+\includegraphics[scale=0.3]{TreePlot_RF3.png}
+\end{center}
+\end{figure}  
+
+\begin{figure}  [h!]
+\begin{center}
+\caption{Random forest regressor}
+\includegraphics[scale=0.4]{RFRegressor_RF3.png}
+\end{center}
+\end{figure}  
+
+
+
+\end{document}
+

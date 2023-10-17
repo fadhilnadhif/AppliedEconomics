@@ -1,0 +1,102 @@
+\documentclass[10pt,leqno]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lscape}
+\pagenumbering{arabic}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{lscape}
+\usepackage{float}
+%\usepackage[landscape]{geometry}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{subfiles}
+\titlelabel{\thetitle.\quad}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{lastpage}
+\usepackage{palatino}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\title{Task 2 \\
+Applied Empirical Economics}
+\author{Fadhil Nadhif Muharam}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Task 2A}
+
+\begin{table}[h!]
+    \centering
+    \caption{Summary Statistics of Angrist and Krueger (1991) Data}
+    \input{AK91_ValueReview.tex}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{Summary Statistics of Angrist and Lavy (1999) Grade 4 Data}
+    \input{AL99_Grade4_ValueReview.tex}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{Summary Statistics of Angrist and Lavy (1999) Grade 5 Data}
+    \input{AL99_Grade5_ValueReview.tex}
+\end{table}
+
+\pagebreak
+\pagebreak
+
+\section*{Task 2B}
+
+\begin{table}[h!]
+    \centering
+    \caption{Table IV of Angrist and Krueger (1991)}
+    \resizebox{1\textwidth}{!}{
+    \input{AK91_TableIV.tex}
+    }%
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{Table V of Angrist and Krueger (1991)}
+    \resizebox{1\textwidth}{!}{
+    \input{AK91_TableV.tex}
+    }%
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{Table VI of Angrist and Krueger (1991)}
+     \resizebox{1\textwidth}{!}{
+    \input{AK91_TableVI.tex}
+    }%
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{OLS Result of Angrist and Krueger (1991) using Programmed Output}
+    \input{AK91_Table_Programmed.tex}
+\end{table}
+
+\end{document}
+
+
